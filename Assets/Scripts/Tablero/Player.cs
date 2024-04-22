@@ -11,12 +11,8 @@ public class Player : MonoBehaviour
     private int casilla = 0;
     private int newCasilla;
     private GameObject Casilla_Act;
-    private GameObject Casilla_Next;
-    private bool moviendose=false;
-    public float velocidadMovimiento = 2;
-
-    // Duración de la pausa en segundos
-    private float duracionPausa = 3.0f;
+    private GameObject Casilla_Next; 
+    public float velocidadMovimiento = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -81,24 +77,13 @@ public class Player : MonoBehaviour
                 break;
         }
 
-        Invoke("DesaparecerDado", duracionPausa);
+        Invoke("DesaparecerDado", 3.0f);
 
     }
 
     void DesaparecerDado(){
         // Escalamos el dado para que desaparezca
         dado.GetComponent<AnimationScriptSkull>().isScaling = true;
-        Invoke("MoverJugador", duracionPausa);
-    }
-
-    void MoverJugador()
-    {
-        // Indicamos que el jugador se está moviendo
-        moviendose = true;
-
-        // Activamos la animación de vuelo
-        animator.SetBool("move", true);
-        animator.SetTrigger("jump");
 
         // Calculamos la nueva casilla
         newCasilla = (casilla + movimiento) % 10;
@@ -114,6 +99,15 @@ public class Player : MonoBehaviour
         Quaternion nuevaRotacion = Quaternion.Euler(0f, rotacion, 0f);
         transform.rotation = nuevaRotacion;
 
+        // Activamos la animación de vuelo
+        animator.SetBool("move", true);
+        animator.SetTrigger("jump");
+
+        Invoke("MoverJugador", 2.0f);
+    }
+
+    void MoverJugador()
+    {
         // Iniciamos la corrutina para mover al jugador
         StartCoroutine(MoverJugadorCoroutine());
     }
@@ -125,7 +119,7 @@ public class Player : MonoBehaviour
         float deltaZ = puntoB.z - puntoA.z;
 
         // Usamos Atan2 para obtener el ángulo en radianes entre los dos puntos
-        float radianes = Mathf.Atan2(deltaZ, deltaX);
+        float radianes = Mathf.Atan2(deltaX, deltaZ);
 
         // Convertimos de radianes a grados y ajustamos el ángulo para que esté en el rango [0, 360]
         float grados = radianes * Mathf.Rad2Deg;
@@ -162,7 +156,6 @@ public class Player : MonoBehaviour
         casilla = newCasilla;
 
         // Indicamos que el jugador ha terminado de moverse
-        moviendose = false;
         animator.SetBool("move", false);
     }
 }
