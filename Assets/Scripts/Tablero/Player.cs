@@ -7,12 +7,13 @@ public class Player : MonoBehaviour
     private Animator animator;
     public Dado dado; // Variable para almacenar la instancia de Dado
     private int movimiento;
-    private bool TuTurno = true;
+    public bool TuTurno = false;
     private int casilla = 0;
     private int newCasilla;
     private GameObject Casilla_Act;
     private GameObject Casilla_Next; 
     public float velocidadMovimiento = 3;
+    public Camera camara;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (TuTurno){
+            camara.transform.position = transform.position + new Vector3(0,1.5f,6.0f);
+            camara.transform.rotation = Quaternion.Euler(0,180.0f,0);
             Invoke("TurnoJugador", 0);
         }
 
@@ -103,6 +106,9 @@ public class Player : MonoBehaviour
         animator.SetBool("move", true);
         animator.SetTrigger("jump");
 
+        camara.transform.position= new Vector3(15.9857292f,18.8156891f,32.3321609f);
+        camara.transform.rotation= Quaternion.Euler(33.8972664f,199.836166f,0.0f);
+
         Invoke("MoverJugador", 2.0f);
     }
 
@@ -157,7 +163,9 @@ public class Player : MonoBehaviour
 
         // Indicamos que el jugador ha terminado de moverse
         animator.SetBool("move", false);
+
+        // Movemos la camara hacia el juagador de nuevo
+        camara.transform.position = transform.position + new Vector3(0,1.5f,6.0f);
+        camara.transform.rotation = Quaternion.Euler(0,180.0f,0);
     }
 }
-
-    
