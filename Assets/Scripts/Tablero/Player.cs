@@ -5,15 +5,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator animator;
-    public Dado dado; // Variable para almacenar la instancia de Dado
+    public GameObject dado; // Variable para almacenar la instancia de Dado
     private int movimiento;
-    public bool TuTurno = false;
+    private bool TuTurno = false;
     private int casilla = 0;
     private int newCasilla;
     private GameObject Casilla_Act;
     private GameObject Casilla_Next; 
-    public float velocidadMovimiento = 3;
+    public float velocidadMovimiento = 5;
     public Camera camara;
+    public TableroJuego tablero;
 
     // Start is called before the first frame update
     void Start()
@@ -28,19 +29,23 @@ public class Player : MonoBehaviour
         if (TuTurno){
             camara.transform.position = transform.position + new Vector3(0,1.5f,6.0f);
             camara.transform.rotation = Quaternion.Euler(0,180.0f,0);
-            Invoke("TurnoJugador", 0);
+            transform.localScale = new Vector3(1,1,1);
+            Invoke("TiradaJugador", 0);
         }
 
         if(dado.GetComponent<Transform>().localScale.x <= 0.02f){
             dado.GetComponent<AnimationScriptSkull>().isScaling = false;
         }
 
+        /*if (EnTurno){
+            
+        }*/
+
     }
 
-    void TurnoJugador(){
+    void TiradaJugador(){
         dado.GetComponent<Transform>().localScale = new Vector3(2,2,2);
-        dado.GetComponent<Transform>().SetPositionAndRotation(this.GetComponent<Transform>().position + new Vector3(0, 3, 0), Quaternion.Euler(0, 270, 0));
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && TuTurno)
         {
             TuTurno = false;
             dado.GetComponent<AnimationScriptSkull>().isRotating = true;
@@ -54,7 +59,7 @@ public class Player : MonoBehaviour
     void PausarYRealizarTirada()
     {
         // Llamamos al método Tirar() de la instancia dado
-        movimiento = dado.Tirar();
+        movimiento = dado.GetComponent<Dado>().Tirar();
         dado.GetComponent<AnimationScriptSkull>().isRotating = false;
 
         // Establecemos la posición y rotación del dado según el resultado de la tirada
@@ -167,5 +172,23 @@ public class Player : MonoBehaviour
         // Movemos la camara hacia el juagador de nuevo
         camara.transform.position = transform.position + new Vector3(0,1.5f,6.0f);
         camara.transform.rotation = Quaternion.Euler(0,180.0f,0);
+
+        Invoke("TurnoJugador", 3.0f);
+    }
+
+    void TurnoJugador(){
+        // Añadir opciones que hacer en el turno
+
+        
+        Invoke("FinTurno", 1.0f);
+    }
+
+    void FinTurno(){
+        transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+        tablero.SiguienteTurno();
+    }
+
+    public void ActivarTurno(){
+        TuTurno = true;
     }
 }
