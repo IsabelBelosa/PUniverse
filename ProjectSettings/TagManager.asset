@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - dado
+  - casilla0
+  - casilla1
+  - casilla2
+  - casilla3
+  - casilla4
+  - casilla5
+  - casilla6
+  - casilla7
+  - casilla8
+  - casilla9
   layers:
   - Default
   - TransparentFX
