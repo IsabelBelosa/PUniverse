@@ -10,7 +10,7 @@ public class Alien : MonoBehaviour
     public AudioClip mareo;
     public AudioClip cohete;
     private AlienVuela alienVuela;
-    public Player jugadorInicio;
+    public TableroJuego tablero;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class Alien : MonoBehaviour
     }
 
     void comenzarPartida(){
-        jugadorInicio.TuTurno=true;
+        tablero.IniciarJuego();
     }
 
     void CambiarAnimacion(string nombreAnimacion)
