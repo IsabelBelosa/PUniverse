@@ -6,10 +6,11 @@ public class TableroJuego : MonoBehaviour
 {
     public Player jugador1;
     public Player jugador2;
-    //public Player jugador3;
-    //public Player jugador4;
+    public Player jugador3;
+    public Player jugador4;
     private int turno = 0;
-    private int numJugadores = 2;
+    private int numJugadores = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,8 @@ public class TableroJuego : MonoBehaviour
         
     }
 
-    public void IniciarJuego(){
+    public void IniciarJuego(/*int n*/){
+        //numJugadores = n;
         jugador1.ActivarTurno();
     }
 
@@ -35,11 +37,12 @@ public class TableroJuego : MonoBehaviour
         if (turno == 1){
             jugador2.ActivarTurno();
         }
-        //if (turno == 2){
-        //    jugador3.ActivarTurno();
-        //}
-        //if (turno == 3){
-        //    jugador4.ActivarTurno();
-        //}
+        if (turno == 2){
+            jugador3.ActivarTurno();
+        }
+        if (turno == 3){
+            jugador4.ActivarTurno();
+        }
     }
+
 }

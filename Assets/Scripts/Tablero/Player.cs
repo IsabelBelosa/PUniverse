@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private int newCasilla;
     private GameObject Casilla_Act;
     private GameObject Casilla_Next; 
-    public float velocidadMovimiento = 5;
+    public float velocidadMovimiento = 8;
     public Camera camara;
     public TableroJuego tablero;
 
@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
     }
 
     void TiradaJugador(){
+        //obtenemos la casilla actual y escondemos el logo
+        Casilla_Act = GameObject.FindWithTag("casilla"+casilla);
+        if (Casilla_Act == null){
+            Debug.LogError("Casilla_Act no ha sido inicializada correctamente con la casilla numero:" + casilla);
+            return;
+        }
+        Casilla_Act.GetComponent<EsconderLogo>().Reducir();
+        
         dado.GetComponent<Transform>().localScale = new Vector3(2,2,2);
         if (Input.GetButtonDown("Jump") && TuTurno)
         {
@@ -91,7 +99,7 @@ public class Player : MonoBehaviour
 
     void DesaparecerDado(){
         // Escalamos el dado para que desaparezca
-        dado.GetComponent<AnimationScriptSkull>().isScaling = true;
+        dado.transform.localScale = new Vector3(0.0002f, 0.0002f, 0.0002f);
 
         // Calculamos la nueva casilla
         newCasilla = (casilla + movimiento) % 10;
@@ -114,7 +122,9 @@ public class Player : MonoBehaviour
         camara.transform.position= new Vector3(15.9857292f,18.8156891f,32.3321609f);
         camara.transform.rotation= Quaternion.Euler(33.8972664f,199.836166f,0.0f);
 
-        Invoke("MoverJugador", 2.0f);
+        Casilla_Act.GetComponent<EsconderLogo>().Aumentar();
+
+        Invoke("MoverJugador", 1.0f);
     }
 
     void MoverJugador()

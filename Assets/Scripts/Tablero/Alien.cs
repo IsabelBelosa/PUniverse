@@ -50,6 +50,8 @@ public class Alien : MonoBehaviour
     }
 
     void comenzarPartida(){
+        GameObject.FindWithTag("cohete").gameObject.SetActive(false);
+        gameObject.SetActive(false);
         tablero.IniciarJuego();
     }
 
