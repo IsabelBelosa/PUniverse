@@ -46,10 +46,6 @@ public class Player : MonoBehaviour
     void TiradaJugador(){
         //obtenemos la casilla actual y escondemos el logo
         Casilla_Act = GameObject.FindWithTag("casilla"+casilla);
-        if (Casilla_Act == null){
-            Debug.LogError("Casilla_Act no ha sido inicializada correctamente con la casilla numero:" + casilla);
-            return;
-        }
         Casilla_Act.GetComponent<EsconderLogo>().Reducir();
         
         dado.GetComponent<Transform>().localScale = new Vector3(2,2,2);

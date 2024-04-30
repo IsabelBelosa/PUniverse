@@ -16,6 +16,7 @@ public class Alien : MonoBehaviour
     void Start()
     {
         // Obtener el componente Animator del objeto
+        transform.position = new Vector3(-5.42000008f,4.25f,-26.7800007f);
         animator = GetComponent<Animator>();
         alienVuela = GetComponent<AlienVuela>();
         Invoke("MareoAlien",5.5f);
