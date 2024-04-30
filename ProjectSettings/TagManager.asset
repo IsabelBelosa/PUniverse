@@ -15,6 +15,11 @@ TagManager:
   - casilla7
   - casilla8
   - casilla9
+  - Cube
+  - cohete
+  - controller
+  - star
+  - skull
   layers:
   - Default
   - TransparentFX
