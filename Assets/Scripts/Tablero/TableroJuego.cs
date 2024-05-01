@@ -23,8 +23,8 @@ public class TableroJuego : MonoBehaviour
         
     }
 
-    public void IniciarJuego(/*int n*/){
-        //numJugadores = n;
+    public void IniciarJuego(){
+        numJugadores = Menu.Jugadores;
         jugador1.ActivarTurno();
     }
 

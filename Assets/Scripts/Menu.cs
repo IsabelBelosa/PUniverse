@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    static public int Jugadores;
     public void MenuJugadores()
     {
         SceneManager.LoadScene("Menu");
     }
 
-    public void Inicio()
+    public void Inicio(int n)
     {
+        Jugadores = n;
         SceneManager.LoadScene("Tablero");
     }
     
