@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Alien : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Alien : MonoBehaviour
     public AudioClip cohete;
     private AlienVuela alienVuela;
     public TableroJuego tablero;
+    static public Text mensajeInicio;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class Alien : MonoBehaviour
         transform.position = new Vector3(-5.42000008f,4.25f,-26.7800007f);
         animator = GetComponent<Animator>();
         alienVuela = GetComponent<AlienVuela>();
+        mensajeInicio = GameObject.FindWithTag("inicio").GetComponent<Text>();
         Invoke("MareoAlien",5.5f);
     }
 
@@ -47,7 +50,12 @@ public class Alien : MonoBehaviour
         GetComponent<AudioSource>().Play();
         camara.transform.position = new Vector3(-9.465719f, 8.143775f, -28.78481f);
         camara.transform.rotation = new Quaternion(18.3588505f,180.281967f,-18.3588505f,0f);
-        Invoke("comenzarPartida", 8.5f);
+        Invoke("comenzarPartidaCartel", 6.5f);
+    }
+
+    void comenzarPartidaCartel(){
+        mensajeInicio.enabled = true;
+        Invoke("comenzarPartida", 2.0f);
     }
 
     void comenzarPartida(){

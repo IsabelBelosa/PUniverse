@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class Player : MonoBehaviour
     public float velocidadMovimiento = 8;
     public Camera camara;
     public TableroJuego tablero;
+    private int puntuacion=0;
+    static public bool victoria = false;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,9 +42,10 @@ public class Player : MonoBehaviour
             dado.GetComponent<AnimationScriptSkull>().isScaling = false;
         }
 
-        /*if (EnTurno){
-            
-        }*/
+        if (TableroJuego.juegoTerminado == true && tag == "jugador" + (TableroJuego.turno+1) ){
+            TableroJuego.juegoTerminado = false;
+            Invoke("FinMinijuego", 2.0f);
+        }
 
     }
 
@@ -184,9 +190,38 @@ public class Player : MonoBehaviour
 
     void TurnoJugador(){
         // Añadir opciones que hacer en el turno
-
+        if(casilla == 3){
+            puntuacion++;
+            animator.SetTrigger("victory");
+            Invoke("FinTurno", 1.0f);
+        }
+        if(casilla == 4 || casilla == 7){
+            animator.SetTrigger("defeat");
+            if (puntuacion>0){
+                puntuacion--;
+            }
+            Invoke("FinTurno", 2.0f);
+        }
+        if(casilla == 1 || casilla == 6 || casilla == 9){
+            tablero.ActivarMinijuego();
+        }
+        if (casilla == 2 || casilla == 5 || casilla == 8 || casilla == 0){
+            Invoke("FinTurno", 1.0f);
+        }
         
-        Invoke("FinTurno", 1.0f);
+    }
+
+    void FinMinijuego(){
+        if (victoria == false){
+            animator.SetTrigger("defeat");
+        }
+        if (victoria == true){
+            puntuacion++;
+            victoria=false;
+            animator.SetTrigger("victory");
+        }
+        tablero.DesactivarMinijuego();
+        Invoke("FinTurno", 2.0f);
     }
 
     void FinTurno(){
@@ -195,6 +230,7 @@ public class Player : MonoBehaviour
     }
 
     public void ActivarTurno(){
+        TableroJuego.puntos.text="Estrellas: "+puntuacion;
         TuTurno = true;
     }
 }
