@@ -68,7 +68,9 @@ public class Movement : MonoBehaviour {
 		actualGroup.GetComponent<Rotation> ().isActive = true;
 		if (!gameObject.GetComponent<CubeArray> ().getCubePositionFromScene ()) {
 			// Game over :/
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+			TableroJuego.juegoTerminado = true;
+        	Scene tablero = SceneManager.GetSceneByName("Tablero");
+        	SceneManager.SetActiveScene(tablero);
 		} else {
 			gameObject.GetComponent<CubeArray> ().checkForFullLine ();
 		} 

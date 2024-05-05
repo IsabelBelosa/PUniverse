@@ -55,7 +55,10 @@ public class Highscore : MonoBehaviour {
 	public void Update(){
 		if(points > 200)
 		{
-			SceneManager.LoadScene("Tablero");
+			TableroJuego.juegoTerminado = true;
+			Player.victoria=true;
+        	Scene tablero = SceneManager.GetSceneByName("Tablero");
+        	SceneManager.SetActiveScene(tablero);
 		}
 	}
 

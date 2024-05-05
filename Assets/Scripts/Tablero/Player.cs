@@ -208,7 +208,6 @@ public class Player : MonoBehaviour
         if (casilla == 2 || casilla == 5 || casilla == 8 || casilla == 0){
             Invoke("FinTurno", 1.0f);
         }
-        
     }
 
     void FinMinijuego(){

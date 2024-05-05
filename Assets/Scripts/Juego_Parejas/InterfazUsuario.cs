@@ -56,7 +56,6 @@ public class InterfazUsuario : MonoBehaviour
     public void PausarCronometro()
     {
         CancelInvoke("ActualizarCronometro");
-        MostrarMenuPerdedor();
     }
 
     public void ActualizarCronometro()
@@ -69,7 +68,7 @@ public class InterfazUsuario : MonoBehaviour
 
             if (segundosCronometro >= 60)
             {
-                TableroJuego.juegoTerminado = true;
+                MostrarMenuPerdedor();
                 PausarCronometro();
             }
             else{

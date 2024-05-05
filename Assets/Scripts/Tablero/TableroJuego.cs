@@ -63,18 +63,18 @@ public class TableroJuego : MonoBehaviour
     }
 
     public void ActivarMinijuego(){
-        int juego = Random.Range(1, 2); //cambiar el rango cuando esten los minijuegos
+        int juego = Random.Range(1, 3); //cambiar el rango cuando esten los minijuegos
         switch(juego){
             case 1:
                 minijuego = "Juego_Parejas";
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
             case 2:
-                minijuego = "Laberinto";
+                minijuego = "Tetris";
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
             case 3:
-                minijuego = "Tetris";
+                minijuego = "Laberinto";
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
         }   
