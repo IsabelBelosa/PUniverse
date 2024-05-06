@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tablero.unity
     guid: 34d8ea2b82cc02a4f92927e6e89a16e8
+  - enabled: 1
+    path: Assets/Scenes/2048Scenes/2048Start.unity
+    guid: 06ad3eabe63a5314a93b7475853521cb
+  - enabled: 1
+    path: Assets/Scenes/2048Scenes/2048.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
