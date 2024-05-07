@@ -15,9 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Tablero.unity
     guid: 34d8ea2b82cc02a4f92927e6e89a16e8
   - enabled: 1
+
     path: Assets/Scenes/Juego_Parejas.unity
     guid: 77b9668425c91cd42a9c29093c09da70
   - enabled: 1
     path: Assets/Scenes/Tetris.unity
     guid: deac80e34eb314406b365f9cc4b09fc9
+
   m_configObjects: {}
