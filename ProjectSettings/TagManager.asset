@@ -15,6 +15,17 @@ TagManager:
   - casilla7
   - casilla8
   - casilla9
+  - Cube
+  - cohete
+  - controller
+  - star
+  - skull
+  - inicio
+  - puntuacion
+  - jugador1
+  - jugador2
+  - jugador3
+  - jugador4
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class InterfazUsuario : MonoBehaviour
 {
@@ -13,13 +14,14 @@ public class InterfazUsuario : MonoBehaviour
     public int segundosCronometro;
     public Text cronometro;
 
-    public bool juegoTerminado; // Variable para indicar si el juego ha terminado
+    
 
     public void MostrarMenuGanador()
     {
         menuGanador.SetActive(true);
         menuMostradoGanador = true;
-        juegoTerminado = true; // El juego ha terminado
+        Player.victoria=true; //el marcador de victoria del jugador de cambia desde el minijuego 
+        
     }
 
     public void EsconderMenuGanador()
@@ -32,7 +34,7 @@ public class InterfazUsuario : MonoBehaviour
     {
         menuPerdedor.SetActive(true);
         menuMostradoPerdedor = true;
-        // juegoTerminado = true; // El juego ha terminado
+        
     }
 
     public void EsconderMenuPerdedor()
@@ -54,12 +56,11 @@ public class InterfazUsuario : MonoBehaviour
     public void PausarCronometro()
     {
         CancelInvoke("ActualizarCronometro");
-        MostrarMenuPerdedor();
     }
 
     public void ActualizarCronometro()
     {
-        if (!juegoTerminado) // Verifica si el juego aún no ha terminado
+        if (!TableroJuego.juegoTerminado) // Verifica si el juego aún no ha terminado
         {
             segundosCronometro++;
             TimeSpan tiempo = new TimeSpan(0, 0, segundosCronometro);
@@ -67,11 +68,12 @@ public class InterfazUsuario : MonoBehaviour
 
             if (segundosCronometro >= 60)
             {
-                juegoTerminado = true;
+                MostrarMenuPerdedor();
                 PausarCronometro();
             }
-
+            else{
             Invoke("ActualizarCronometro", 1.0f);
+        }
         }
     }
 
@@ -82,5 +84,12 @@ public class InterfazUsuario : MonoBehaviour
         EsconderMenuGanador();
         EsconderMenuPerdedor();
         ActivarCronometro();
+    }
+
+    public void FinalizarJuego(){ //esta funcion debe usarse para cerrar todos los minijuegos
+        TableroJuego.juegoTerminado = true;
+        Scene tablero = SceneManager.GetSceneByName("Tablero");
+        SceneManager.SetActiveScene(tablero);
+        
     }
 }
