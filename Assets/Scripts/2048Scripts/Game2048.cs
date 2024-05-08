@@ -14,7 +14,7 @@ public class Game2048 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hiscoreText;
     private int score;
     public int Score => score;
-
+    public GameObject startButton, window;
 
     private void Awake()
     {
@@ -25,6 +25,14 @@ public class Game2048 : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+
+    public void OnClickStart()
+    {
+		Time.timeScale = 1; 
+		window.SetActive (false); 
+		Start();
+	}
 
     private void Start()
     {
