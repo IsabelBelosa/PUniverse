@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    static public int Jugadores;
+    static public int Jugadores = 1;
     public void MenuJugadores()
     {
         SceneManager.LoadScene("Menu");
