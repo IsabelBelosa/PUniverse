@@ -73,7 +73,7 @@ public class InterfazUsuario : MonoBehaviour
             }
             else{
             Invoke("ActualizarCronometro", 1.0f);
-        }
+            }
         }
     }
 
