@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour {
 		} 
 	}
 
-	// Función para limpiar los cubos
+	// Función para limpiar los cubos cuando pierda
     private void ClearCubes(){
         GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
         foreach(GameObject cube in cubes){
