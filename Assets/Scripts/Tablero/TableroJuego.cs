@@ -16,6 +16,7 @@ public class TableroJuego : MonoBehaviour
     public Text numJugador;
     private string minijuego;
     static public bool juegoTerminado = false; // Variable para indicar si el juego ha terminado
+    static public int jugador_gana = 1;
 
     // Start is called before the first frame update
     void Start()
