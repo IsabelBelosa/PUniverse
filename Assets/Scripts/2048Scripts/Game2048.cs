@@ -14,7 +14,7 @@ public class Game2048 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hiscoreText;
     private int score;
     public int Score => score;
-    public GameObject startButton, window;
+    public GameObject startButton, window,camera;
 
     private void Awake()
     {
@@ -71,7 +71,10 @@ public class Game2048 : MonoBehaviour
 
         yield return new WaitForSeconds(1f); // Espera 1 segundo antes de cambiar de escena
 
-        SceneManager.LoadScene("Tablero");
+        Destroy(camera);
+        TableroJuego.juegoTerminado = true;
+        Scene tablero = SceneManager.GetSceneByName("Tablero");
+        SceneManager.SetActiveScene(tablero);
     }
 
     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)
@@ -122,7 +125,11 @@ public class Game2048 : MonoBehaviour
 	public void Update(){
 		if(score >= 1000)
 		{
-			SceneManager.LoadScene("Tablero");
+            Destroy(camera);
+            TableroJuego.juegoTerminado = true;
+            Player.victoria=true;
+            Scene tablero = SceneManager.GetSceneByName("Tablero");
+            SceneManager.SetActiveScene(tablero);
 		}
 	}
 }
