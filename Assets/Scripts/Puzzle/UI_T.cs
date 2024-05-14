@@ -104,8 +104,8 @@ public class UI_T : MonoBehaviour
 
     public void FinalizarJuego(){ //esta funcion debe usarse para cerrar todos los minijuegos
         TableroJuego.juegoTerminado = true;
+        Player.victoria=true;
         Scene tablero = SceneManager.GetSceneByName("Tablero");
         SceneManager.SetActiveScene(tablero);
-        
     }
 }
