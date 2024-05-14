@@ -68,6 +68,7 @@ public class Movement : MonoBehaviour {
 		actualGroup.GetComponent<Rotation> ().isActive = true;
 		if (!gameObject.GetComponent<CubeArray> ().getCubePositionFromScene ()) {
 			// Game over :/
+			ClearCubes(); // Llama a la función para limpiar los cubos
 			TableroJuego.juegoTerminado = true;
         	Scene tablero = SceneManager.GetSceneByName("Tablero");
         	SceneManager.SetActiveScene(tablero);
@@ -75,4 +76,12 @@ public class Movement : MonoBehaviour {
 			gameObject.GetComponent<CubeArray> ().checkForFullLine ();
 		} 
 	}
+
+	// Función para limpiar los cubos cuando pierda
+    private void ClearCubes(){
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
+        foreach(GameObject cube in cubes){
+            Destroy(cube);
+        }
+    }
 }
