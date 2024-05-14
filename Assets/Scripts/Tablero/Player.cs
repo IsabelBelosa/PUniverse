@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -12,9 +13,13 @@ public class Player : MonoBehaviour
     private int newCasilla;
     private GameObject Casilla_Act;
     private GameObject Casilla_Next; 
-    public float velocidadMovimiento = 5;
+    public float velocidadMovimiento = 8;
     public Camera camara;
     public TableroJuego tablero;
+    private int puntuacion=0;
+    static public bool victoria = false;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +42,18 @@ public class Player : MonoBehaviour
             dado.GetComponent<AnimationScriptSkull>().isScaling = false;
         }
 
-        /*if (EnTurno){
-            
-        }*/
+        if (TableroJuego.juegoTerminado == true && tag == "jugador" + (TableroJuego.turno+1) ){
+            TableroJuego.juegoTerminado = false;
+            Invoke("FinMinijuego", 2.0f);
+        }
 
     }
 
     void TiradaJugador(){
+        //obtenemos la casilla actual y escondemos el logo
+        Casilla_Act = GameObject.FindWithTag("casilla"+casilla);
+        Casilla_Act.GetComponent<EsconderLogo>().Reducir();
+        
         dado.GetComponent<Transform>().localScale = new Vector3(2,2,2);
         if (Input.GetButtonDown("Jump") && TuTurno)
         {
@@ -91,7 +101,7 @@ public class Player : MonoBehaviour
 
     void DesaparecerDado(){
         // Escalamos el dado para que desaparezca
-        dado.GetComponent<AnimationScriptSkull>().isScaling = true;
+        dado.transform.localScale = new Vector3(0.0002f, 0.0002f, 0.0002f);
 
         // Calculamos la nueva casilla
         newCasilla = (casilla + movimiento) % 10;
@@ -114,7 +124,9 @@ public class Player : MonoBehaviour
         camara.transform.position= new Vector3(15.9857292f,18.8156891f,32.3321609f);
         camara.transform.rotation= Quaternion.Euler(33.8972664f,199.836166f,0.0f);
 
-        Invoke("MoverJugador", 2.0f);
+        Casilla_Act.GetComponent<EsconderLogo>().Aumentar();
+
+        Invoke("MoverJugador", 1.0f);
     }
 
     void MoverJugador()
@@ -178,9 +190,37 @@ public class Player : MonoBehaviour
 
     void TurnoJugador(){
         // Añadir opciones que hacer en el turno
+        if(casilla == 3){
+            puntuacion++;
+            animator.SetTrigger("victory");
+            Invoke("FinTurno", 1.0f);
+        }
+        if(casilla == 4 || casilla == 7){
+            animator.SetTrigger("defeat");
+            if (puntuacion>0){
+                puntuacion--;
+            }
+            Invoke("FinTurno", 2.0f);
+        }
+        if(casilla == 1 || casilla == 6 || casilla == 9){
+            tablero.ActivarMinijuego();
+        }
+        if (casilla == 2 || casilla == 5 || casilla == 8 || casilla == 0){
+            Invoke("FinTurno", 1.0f);
+        }
+    }
 
-        
-        Invoke("FinTurno", 1.0f);
+    void FinMinijuego(){
+        if (victoria == false){
+            animator.SetTrigger("defeat");
+        }
+        if (victoria == true){
+            puntuacion++;
+            victoria=false;
+            animator.SetTrigger("victory");
+        }
+        tablero.DesactivarMinijuego();
+        Invoke("FinTurno", 2.0f);
     }
 
     void FinTurno(){
@@ -189,6 +229,7 @@ public class Player : MonoBehaviour
     }
 
     public void ActivarTurno(){
+        TableroJuego.puntos.text="Estrellas: "+puntuacion;
         TuTurno = true;
     }
 }

@@ -15,10 +15,26 @@ TagManager:
   - casilla7
   - casilla8
   - casilla9
+
+  - Cube
+  - cohete
+  - controller
+  - star
+  - skull
+  - inicio
+  - puntuacion
+  - jugador1
+  - jugador2
+  - jugador3
+  - jugador4
+  - Ficha
+  - Borde
+
   - "Se\xF1uelo"
   - Alien
   - Pared
   - Cohete
+
   layers:
   - Default
   - TransparentFX

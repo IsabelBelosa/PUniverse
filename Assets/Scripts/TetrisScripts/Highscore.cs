@@ -52,11 +52,23 @@ public class Highscore : MonoBehaviour {
 		rowText.text = rows.ToString (); 
 	}
 
-	public void Update(){
-		if(points > 200)
-		{
-			SceneManager.LoadScene("Tablero");
-		}
-	}
+    public void Update(){
+        if(points > 200)
+        {
+            ClearCubes(); // Llama a la función para limpiar los cubos
+            TableroJuego.juegoTerminado = true;
+            Player.victoria=true;
+            Scene tablero = SceneManager.GetSceneByName("Tablero");
+            SceneManager.SetActiveScene(tablero);
+        }
+    }
+
+    // Función para limpiar los cubos
+    private void ClearCubes(){
+        GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cube");
+        foreach(GameObject cube in cubes){
+            Destroy(cube);
+        }
+    }
 
 }
