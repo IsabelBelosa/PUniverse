@@ -14,15 +14,20 @@ public class Carta : MonoBehaviour
     public GameObject CrearCartas;
     public bool Mostrando;
     
+    public GameObject interfazUsuario;
+    
     void Awake()
     {
         CrearCartas = GameObject.Find("Scripts");   
+        interfazUsuario = GameObject.Find("Scripts");
     }
 
     public void OnMouseDown() //Si le damos click, se da la vuelta
     {
-        print(IdCarta.ToString()); 
-        MostrarCarta();
+        if (!interfazUsuario.GetComponent<InterfazUsuario>().menuMostradoInicio)
+        {
+            MostrarCarta();
+        }
     }
 
     public void AsignarTextura(Texture2D _textura)

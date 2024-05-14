@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class InterfazUsuario : MonoBehaviour
+public class UI_T : MonoBehaviour
 {
     public GameObject menuGanador;
     public bool menuMostradoGanador;
@@ -17,7 +17,7 @@ public class InterfazUsuario : MonoBehaviour
     public int segundosCronometro;
     public Text cronometro;
 
-
+    
     public void MostrarMenuInicio()
     {
         menuInicio.SetActive(true);
@@ -81,7 +81,7 @@ public class InterfazUsuario : MonoBehaviour
             TimeSpan tiempo = new TimeSpan(0, 0, segundosCronometro);
             cronometro.text = tiempo.ToString(@"mm\:ss");
 
-            if (segundosCronometro >= 60)
+            if (segundosCronometro >= 420) // 420
             {
                 MostrarMenuPerdedor();
                 PausarCronometro();
