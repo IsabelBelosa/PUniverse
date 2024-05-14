@@ -15,6 +15,7 @@ TagManager:
   - casilla7
   - casilla8
   - casilla9
+
   - Cube
   - cohete
   - controller
@@ -28,6 +29,12 @@ TagManager:
   - jugador4
   - Ficha
   - Borde
+
+  - "Se\xF1uelo"
+  - Alien
+  - Pared
+  - Cohete
+
   layers:
   - Default
   - TransparentFX

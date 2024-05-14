@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cloud
+  m_Name: Earth_Lod
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -44,13 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-
-
-        m_Texture: {fileID: 2800000, guid: 206ef5972611d42c897fafda4c576e06, type: 3}
-
-
-        m_Texture: {fileID: 2800000, guid: 206ef5972611d42c897fafda4c576e06, type: 3}
-
+        m_Texture: {fileID: 2800000, guid: 5557d027e948d4b6194fccc5771b4fe6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
