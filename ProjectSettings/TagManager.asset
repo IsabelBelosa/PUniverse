@@ -15,6 +15,10 @@ TagManager:
   - casilla7
   - casilla8
   - casilla9
+  - "Se\xF1uelo"
+  - Alien
+  - Pared
+  - Cohete
   layers:
   - Default
   - TransparentFX
