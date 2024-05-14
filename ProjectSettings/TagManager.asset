@@ -26,6 +26,8 @@ TagManager:
   - jugador2
   - jugador3
   - jugador4
+  - Ficha
+  - Borde
   layers:
   - Default
   - TransparentFX
