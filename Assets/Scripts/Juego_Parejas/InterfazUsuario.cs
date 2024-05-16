@@ -11,10 +11,25 @@ public class InterfazUsuario : MonoBehaviour
     public GameObject menuPerdedor;
     public bool menuMostradoPerdedor;
 
+    public GameObject menuInicio;
+    public bool menuMostradoInicio;
+
     public int segundosCronometro;
     public Text cronometro;
 
-    
+
+    public void MostrarMenuInicio()
+    {
+        menuInicio.SetActive(true);
+        menuMostradoInicio = true;
+    }
+
+    public void EsconderMenuInicio()
+    {
+        menuInicio.SetActive(false);
+        menuMostradoInicio = false;
+        ActivarCronometro();
+    }
 
     public void MostrarMenuGanador()
     {
@@ -83,7 +98,8 @@ public class InterfazUsuario : MonoBehaviour
     {
         EsconderMenuGanador();
         EsconderMenuPerdedor();
-        ActivarCronometro();
+        MostrarMenuInicio();
+        // ActivarCronometro();
     }
 
     public void FinalizarJuego(){ //esta funcion debe usarse para cerrar todos los minijuegos
