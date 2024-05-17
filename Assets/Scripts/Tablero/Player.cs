@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     public float velocidadMovimiento = 8;
     public Camera camara;
     public TableroJuego tablero;
-    private int puntuacion=0;
+    public int puntuacion=0;
     static public bool victoria = false;
     
     
