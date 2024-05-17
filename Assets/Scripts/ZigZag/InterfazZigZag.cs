@@ -16,6 +16,7 @@ public class InterfazZigZag : MonoBehaviour
 
     public int segundosCronometro;
     public Text cronometro;
+    private JugadorZigZag jugadorZigZag;
 
     public void MostrarMenuInicio()
     {
@@ -77,7 +78,7 @@ public class InterfazZigZag : MonoBehaviour
 
         if (segundosCronometro >= 60)
         {
-            PerderJuego();
+            jugadorZigZag.GameOver();
             PausarCronometro();
         }
         else

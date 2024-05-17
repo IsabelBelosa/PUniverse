@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
         // Llamamos al método Tirar() de la instancia dado
         movimiento = dado.GetComponent<Dado>().Tirar();
         dado.GetComponent<AnimationScriptSkull>().isRotating = false;
-
         // Establecemos la posición y rotación del dado según el resultado de la tirada
         switch (movimiento)
         {

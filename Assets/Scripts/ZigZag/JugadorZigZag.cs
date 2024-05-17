@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class JugadorZigZag : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup gameOver;
+
     public Camera camara;
     public GameObject suelo;
     public GameObject bola;
@@ -67,20 +69,21 @@ public class JugadorZigZag : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            CambiarDireccion();
-        }
-    }
-    
-    void FixedUpdate()
-    {
         GetComponent<Rigidbody>().MovePosition(transform.position + DireccionActual * velocidad * Time.fixedDeltaTime);
         if(Input.GetKeyUp(KeyCode.Space))
         {
             CambiarDireccion();
         }
     }
+    
+    // void FixedUpdate()
+    // {
+    //     GetComponent<Rigidbody>().MovePosition(transform.position + DireccionActual * velocidad * Time.fixedDeltaTime);
+    //     if(Input.GetKeyUp(KeyCode.Space))
+    //     {
+    //         CambiarDireccion();
+    //     }
+    // }
     
     private void OnCollisionExit(Collision other){
         if(other.gameObject.tag =="Suelo")
@@ -199,7 +202,11 @@ public class JugadorZigZag : MonoBehaviour
             if (TotalPlanetas == 10)
             {
                 velocidad = 0f;
-                Interfaz.MostrarMenuGanador();
+                Destroy(camara);
+                TableroJuego.juegoTerminado = true;
+                Player.victoria=true;
+                Scene tablero = SceneManager.GetSceneByName("Tablero");
+                SceneManager.SetActiveScene(tablero);
             }
         }
         if(other.gameObject.CompareTag("Asteroide"))
@@ -211,15 +218,16 @@ public class JugadorZigZag : MonoBehaviour
         if(other.gameObject.CompareTag("Pared"))
         {
             Interfaz.MostrarMenuPerder();
+            GameOver();
         }
     }
 
     public void inicio()
     {
         ValX=0.0F;
-        ValZ=0.0f;
+        ValZ=355.0f;
         offset = camara.transform.position - transform.position;
-        
+        CreateSueloInicial();
         DireccionActual = Vector3.forward;
         // Activamos la animación de vuelo
         jugador.SetBool("move", true);
@@ -230,6 +238,42 @@ public class JugadorZigZag : MonoBehaviour
             rb = bola.AddComponent<Rigidbody>();
             rb.useGravity = false; 
         }
-        CreateSueloInicial();
+    }
+
+    public void GameOver()
+    {
+        gameOver.interactable = true;
+
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        yield return StartCoroutine(Fade(gameOver, 1f, 1f)); // Espera a que termine la animación de fade
+
+        yield return new WaitForSeconds(1f); // Espera 1 segundo antes de cambiar de escena
+
+        Destroy(camara);
+        TableroJuego.juegoTerminado = true;
+        Scene tablero = SceneManager.GetSceneByName("Tablero");
+        SceneManager.SetActiveScene(tablero);
+    }
+
+     private IEnumerator Fade(CanvasGroup canvasGroup, float to, float delay = 0f)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float elapsed = 0f;
+        float duration = 0.5f;
+        float from = canvasGroup.alpha;
+
+        while (elapsed < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(from, to, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        canvasGroup.alpha = to;
     }
 }

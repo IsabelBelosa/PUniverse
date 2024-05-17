@@ -64,7 +64,6 @@ public class TableroJuego : MonoBehaviour
     }
 
     public void ActivarMinijuego(){
-        //int juego = Random.Range(2, 3); //cambiar el rango cuando esten los minijuegos
         int juego = Random.Range(1, 6); //cambiar el rango cuando esten los minijuegos
         switch(juego){
             case 1:

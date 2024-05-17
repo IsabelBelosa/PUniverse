@@ -65,15 +65,15 @@ public class Interfaz : MonoBehaviour
     }
 
     public void FinalizarJuego()
-    { //esta funcion debe usarse para cerrar todos los minijuegos
-        Scene tablero = SceneManager.GetSceneByName("Tablero");
+    {
+        //esta funcion debe usarse para cerrar todos los minijuegos
         SceneManager.LoadScene("Final");
         
     }
 
     public void PerderJuego()
-    { //esta funcion debe usarse para cerrar todos los minijuegos
-        Scene tablero = SceneManager.GetSceneByName("Tablero");
+    {
+        //esta funcion debe usarse para cerrar todos los minijuegos
         SceneManager.LoadScene("FinalMalo");
         
     }

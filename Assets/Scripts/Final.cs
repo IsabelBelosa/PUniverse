@@ -8,11 +8,33 @@ public class Final : MonoBehaviour
     public GameObject cristal;
     public Camera camara;
     private float velocidadMovimiento = 8;
+    public Renderer material;
+    public Material azul;
+    public Material rojo;
+    public Material verde;
+    public Material rosa;
     public Text has_ganado;
     public Text ganador;
+    private int turno = 2;
     // Start is called before the first frame update
     void Start()
     {
+        if(turno == 0)
+        {
+            material.material = azul;
+        }
+        else if (turno == 1)
+        {
+            material.material = rosa;
+        }
+        else if (turno == 2)
+        {
+            material.material = verde;
+        }
+        else if (turno == 3)
+        {
+            material.material = rojo;
+        }
         Invoke("VuelaCohete",7.5f);
     }
 

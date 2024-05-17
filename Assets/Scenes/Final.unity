@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12060594, g: 0.11666121, b: 0.12257784, a: 1}
+  m_IndirectSpecularColor: {r: 0.12061115, g: 0.11666454, b: 0.12257991, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,6 +555,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cristal: {fileID: 1162663662}
   camara: {fileID: 385869307}
+  material: {fileID: 1662460616}
+  azul: {fileID: 2100000, guid: e650be1da3138494597f8f976663818a, type: 2}
+  rojo: {fileID: 2100000, guid: b15737edc6d2a1a4eb130efd8d7753b6, type: 2}
+  verde: {fileID: 2100000, guid: a7456f452fad63c45ab2d0420c36f1ad, type: 2}
+  rosa: {fileID: 2100000, guid: 8605746cf06b86241a565f498d115a33, type: 2}
   has_ganado: {fileID: 1079285234}
   ganador: {fileID: 158496933}
 --- !u!1 &922408072
@@ -1044,6 +1049,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6834651432470712451, guid: 147e9fb52f4b2ed4facde44571e75e04, type: 3}
   m_PrefabInstance: {fileID: 1576661623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1662460616 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2205387344409137941, guid: 2c4a1792d2721254eb5b1a3f6a25be21, type: 3}
+  m_PrefabInstance: {fileID: 1315416202}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1821369249
 PrefabInstance:
