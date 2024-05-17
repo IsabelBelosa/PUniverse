@@ -29,12 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ZigZag.unity
     guid: efb124a90ceb82748800044146fc6141
-    path: Assets/Scenes/Puzzle.unity
-    guid: ab394daa99289ce4f96d847922822348
   - enabled: 1
     path: Assets/Scenes/Tetris.unity
     guid: deac80e34eb314406b365f9cc4b09fc9
   - enabled: 1
     path: Assets/Scenes/ZigZag.unity
     guid: b545f8e79fa179748bad1c5802e197a1
+  - enabled: 1
+    path: Assets/Scenes/FinalMalo.unity
+    guid: 95f596ce02f3276468d3079df66c3fb3
   m_configObjects: {}
