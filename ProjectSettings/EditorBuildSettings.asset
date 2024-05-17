@@ -27,15 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Laberinto.unity
     guid: 18d6b9c92740a1044bc1c118efa827f1
   - enabled: 1
-    path: Assets/Scenes/ZigZag.unity
-    guid: efb124a90ceb82748800044146fc6141
-  - enabled: 1
     path: Assets/Scenes/Tetris.unity
     guid: deac80e34eb314406b365f9cc4b09fc9
   - enabled: 1
-    path: Assets/Scenes/ZigZag.unity
-    guid: b545f8e79fa179748bad1c5802e197a1
-  - enabled: 1
     path: Assets/Scenes/FinalMalo.unity
     guid: 5d92685b6054c5443a79ec2157413043
+  - enabled: 1
+    path: Assets/Scenes/ZigZagNuevo.unity
+    guid: 2a8a44fe00a27c044945c6c0491b7af9
   m_configObjects: {}
