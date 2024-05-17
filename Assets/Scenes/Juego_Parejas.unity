@@ -511,8 +511,8 @@ MonoBehaviour:
   - DEBERAS AYUDARME A ENCONTRAR TODAS LAS PAREJAS DE ESTE TABLERO
   - PERO, NO TE LO PONDRE FACIL
   - NO SUPERES LOS 25 INTENTOS Y HAZLO ANTES DE QUE SE ACABE EL TIEMPO
-  textSpeed: 0.1
-  delay: 0.2
+  textSpeed: 20
+  delay: 0.1
   panel: {fileID: 678416536}
   panelMostrado: 0
 --- !u!1 &871328778

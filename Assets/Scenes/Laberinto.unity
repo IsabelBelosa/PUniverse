@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12061115, g: 0.11666454, b: 0.12257991, a: 1}
+  m_IndirectSpecularColor: {r: 0.12065884, g: 0.116636015, b: 0.12262357, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,7 +416,8 @@ MonoBehaviour:
   - EN ESTE NIVEL, DEBES ENCONTRAR A 2 DE MIS HERMANOS
   - PERO NO ES TAN SENCILLO COMO PARECE
   - YA QUE, SOLO 2 DE LOS 5 SON REALES
-  - UNA VEZ QUE LOS TENGAS, LLEGA A LA META PARA ESTAR MAS CERCA DE CONSEGUIR NAVE
+  - UNA VEZ QUE LOS TENGAS
+  - LLEGA A LA META PARA ESTAR MAS CERCA DE CONSEGUIR TU NAVE
   - Y RECUERDA QUE SOLO TIENES 3 MINUTOS
   - UTILIZA LAS TECLAS WASD PARA MOVERTE POR EL MAPA
   textSpeed: 0.1

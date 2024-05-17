@@ -24,26 +24,29 @@ public class DialoguePuzzleScript : MonoBehaviour
 
     IEnumerator WriteLine()
     {
-
-        // Ajustar la velocidad de escritura para la segunda línea
-        if(index == 1)
+        
+        switch(index)
         {
-            textSpeed = 0.05f;
-            delay = 0.3f;
-        }
-        else
-        {
-            if (index == 2 || index == 3)
-            {
-                textSpeed = 0.2f;
-                delay = 0.3f;
-            }
-            else
-            {
-                // Restaurar la velocidad de escritura original para otras líneas
+            case 0:
                 textSpeed = 0.1f;
                 delay = 0.2f;
-            }
+                break;
+            case 1:
+                textSpeed = 0.06f; //0.04
+                delay = 0.5f;
+                break;
+            case 2:
+                textSpeed = 0.08f;
+                delay = 0.3f;
+                break;
+            case 3:
+                textSpeed = 0.06f;
+                delay = 0.05f;
+                break;
+            case 4:
+                textSpeed = 0.06f;
+                delay = 0.3f;
+                break;
         }
 
 
