@@ -10,27 +10,78 @@ public class MoverJugador : MonoBehaviour
     public CharacterController cc;
     public Text ContadorAliens;
     private Interfaz Interfaz;
+    public Animator jugador;
+    public Renderer material;
+    public Material azul;
+    public Material rojo;
+    public Material verde;
+    public Material rosa;
 
     // Variables privadas
     private int aliens = 0;
+    private int turno = 0;
+    private bool Iniciar = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
         cc = GetComponent<CharacterController>();
-        //offSet = camara.transform.position - transform.position;
-        //Cursor.lockState = CursorLockMode.Locked; // Bloquea el cursor para evitar que se salga de la ventana del juego
+        if(turno == 0)
+        {
+            material.material = azul;
+        }
+        else if (TableroJuego.turno == 1)
+        {
+            material.material = rosa;
+        }
+        else if (TableroJuego.turno == 2)
+        {
+            material.material = verde;
+        }
+        else if (TableroJuego.turno == 3)
+        {
+            material.material = rojo;
+        }
     }
 
-    void FixedUpdate()
+    public void IniciarJuego()
     {
-        float Vertical = Input.GetAxis("Vertical");
-        float Horizontal = Input.GetAxis("Horizontal");
-
-        Vector3 movement = new Vector3(Horizontal, 0.0f, Vertical);
-        cc.Move(movement * velocidad);
+        Iniciar = true;
     }
+
+    void Update()
+    {
+        if(Iniciar == true)
+        {
+            float Vertical = Input.GetAxis("Vertical");
+            float Horizontal = Input.GetAxis("Horizontal");
+            if(Vertical > 0)
+            {
+                cc.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+            }
+            if (Vertical < 0)
+            {
+                cc.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
+            }
+            if(Horizontal > 0)
+            {
+                cc.transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            }
+            if(Horizontal < 0)
+            {
+                cc.transform.rotation = Quaternion.Euler(new Vector3(0f, 270f, 0f));
+            }
+            Vector3 movement = new Vector3(Horizontal, 0.0f, Vertical);
+            cc.Move(movement * velocidad);
+        }
+    }
+    
+    void Awake()
+    {
+        Interfaz = GameObject.FindObjectOfType<Interfaz>();
+    }
+
     void OnTriggerEnter(Collider other)
     {
 
@@ -45,10 +96,5 @@ public class MoverJugador : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Interfaz.FinalizarJuego();
         }
-    }
-
-    void Awake()
-    {
-        Interfaz = GameObject.FindObjectOfType<Interfaz>();
     }
 }
