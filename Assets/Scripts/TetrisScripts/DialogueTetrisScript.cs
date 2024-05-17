@@ -36,6 +36,31 @@ public class DialogueTetrisScript : MonoBehaviour
 
     IEnumerator WriteLine()
     {
+
+        switch(index)
+        {
+            case 0:
+                textSpeed = 0.1f;
+                delay = 0.2f;
+                break;
+            case 1:
+                textSpeed = 0.06f; //0.04
+                delay = 0.5f;
+                break;
+            case 2:
+                textSpeed = 0.08f;
+                delay = 0.3f;
+                break;
+            case 3:
+                textSpeed = 0.1f;
+                delay = 0.05f;
+                break;
+            case 4:
+                textSpeed = 0.1f;
+                delay = 0.3f;
+                break;
+        }
+
         foreach (char letter in lines[index].ToCharArray())
         {
             dialogueText.text += letter;
