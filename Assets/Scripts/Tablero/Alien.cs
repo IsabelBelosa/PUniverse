@@ -22,7 +22,7 @@ public class Alien : MonoBehaviour
         animator = GetComponent<Animator>();
         alienVuela = GetComponent<AlienVuela>();
         mensajeInicio = GameObject.FindWithTag("inicio").GetComponent<Text>();
-        Invoke("MareoAlien",5.5f);
+        Invoke("MareoAlien",5f);
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class Alien : MonoBehaviour
         camara.transform.position = new Vector3(-7.343821f, 6.620454f, -27.85598f);
         GetComponent<AudioSource>().clip = mareo; 
         GetComponent<AudioSource>().Play();
-        Invoke("LlegarCohete", 6.5f);
+        Invoke("LlegarCohete", 6f);
     }
 
     void LlegarCohete(){

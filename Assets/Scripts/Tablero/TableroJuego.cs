@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TableroJuego : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class TableroJuego : MonoBehaviour
     private string minijuego;
     static public bool juegoTerminado = false; // Variable para indicar si el juego ha terminado
     static public int jugador_gana = 1;
+    static public int turno_juego;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,19 @@ public class TableroJuego : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(turno_juego > 10){
+            int gana = Math.Max(jugador1.puntuacion, Math.Max(jugador2.puntuacion, Math.Max(jugador3.puntuacion, jugador4.puntuacion)));
+            if (gana == jugador1.puntuacion){
+                jugador_gana = 1;
+            }if (gana == jugador2.puntuacion){
+                jugador_gana = 2;
+            }if (gana == jugador3.puntuacion){
+                jugador_gana = 3;
+            }if (gana == jugador4.puntuacion){
+                jugador_gana = 4;
+            }
+            SceneManager.LoadScene("AnunciarGanador");
+        }
     }
 
     public void IniciarJuego(){
@@ -35,6 +49,7 @@ public class TableroJuego : MonoBehaviour
         Alien.mensajeInicio.enabled = false;
         puntos.enabled = true;
         numJugador.enabled = true;
+        turno_juego = 1;
         jugador1.ActivarTurno();
     }
 
@@ -44,6 +59,7 @@ public class TableroJuego : MonoBehaviour
         if (turno == 0){
             numJugador.text = "Jugador " + (turno+1);
             numJugador.color = Color.blue;
+            turno_juego++;
             jugador1.ActivarTurno();
         }
         if (turno == 1){
@@ -64,7 +80,9 @@ public class TableroJuego : MonoBehaviour
     }
 
     public void ActivarMinijuego(){
-        int juego = Random.Range(4, 5); //cambiar el rango cuando esten los minijuegos
+
+        int juego = UnityEngine.Random.Range(4, 5); //cambiar el rango cuando esten los minijuegos
+
         switch(juego){
             case 1:
                 minijuego = "Juego_Parejas";
@@ -84,7 +102,7 @@ public class TableroJuego : MonoBehaviour
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
             case 5:
-                minijuego = "Laberinto";
+                minijuego = "ZigZagNuevo";
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
         }   
