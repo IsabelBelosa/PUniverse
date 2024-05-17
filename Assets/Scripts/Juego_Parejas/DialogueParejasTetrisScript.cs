@@ -25,25 +25,45 @@ public class DialogueParejasTetrisScript : MonoBehaviour
     IEnumerator WriteLine()
     {
 
-        // Ajustar la velocidad de escritura para la segunda línea
-        if(index == 1)
+        // // Ajustar la velocidad de escritura para la segunda línea
+        // if(index == 1)
+        // {
+        //     textSpeed = 0.05f;
+        //     delay = 0.3f;
+        // }
+        // else
+        // {
+        //     if (index == 2 || index == 3)
+        //     {
+        //         textSpeed = 0.2f;
+        //         delay = 0.3f;
+        //     }
+        //     else
+        //     {
+        //         // Restaurar la velocidad de escritura original para otras líneas
+        //         textSpeed = 0.1f;
+        //         delay = 0.2f;
+        //     }
+        // }
+
+        
+        if(index == 2)
         {
-            textSpeed = 0.05f;
-            delay = 0.3f;
+            textSpeed = 0.1f;
+            delay = 0.2f;
         }
         else
         {
-            if (index == 2 || index == 3)
+            if(index == 1)
             {
-                textSpeed = 0.2f;
-                delay = 0.3f;
+                textSpeed = 0.05f;
             }
             else
             {
-                // Restaurar la velocidad de escritura original para otras líneas
-                textSpeed = 0.1f;
-                delay = 0.2f;
+                textSpeed = 0.06f;
+                delay = 0.1f; 
             }
+           
         }
 
 
