@@ -217,7 +217,7 @@ public class JugadorZigZag : MonoBehaviour
     public void inicio()
     {
         ValX=0.0F;
-        ValZ=0.0f;
+        ValZ=355;
         offset = camara.transform.position - transform.position;
         
         DireccionActual = Vector3.forward;
