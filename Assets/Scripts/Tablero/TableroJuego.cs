@@ -102,9 +102,7 @@ public class TableroJuego : MonoBehaviour
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
             case 5:
-
                 minijuego = "ZigZagNuevo";
-
                 SceneManager.LoadSceneAsync(minijuego, LoadSceneMode.Additive);
                 break;
         }   

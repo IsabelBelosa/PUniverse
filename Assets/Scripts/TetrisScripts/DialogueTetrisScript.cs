@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogueTetrisScript : MonoBehaviour
 {
@@ -9,12 +10,23 @@ public class DialogueTetrisScript : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     public float delay;
-    // public float fasterTextSpeedForSecondLine = 0.2f;
-    // public float extraDelayForFifthLine = 2f;
     int index;
 
     public GameObject panel;
     public bool panelMostrado;
+
+    public UnityEvent OnDialogueEnd; // Evento para indicar que el diálogo ha terminado
+
+    void Start()
+    {
+        if (OnDialogueEnd == null)
+        {
+            OnDialogueEnd = new UnityEvent();
+        }
+
+        MostrarPanel(); // Mostrar el panel de diálogo al inicio
+        StartDialogue(); // Iniciar el diálogo
+    }
 
     public void StartDialogue()
     {
@@ -24,36 +36,14 @@ public class DialogueTetrisScript : MonoBehaviour
 
     IEnumerator WriteLine()
     {
-
-        // Ajustar la velocidad de escritura para la segunda línea
-        if(index == 1)
-        {
-            textSpeed = 0.05f;
-            delay = 0.3f;
-        }
-        else
-        {
-            if (index == 2 || index == 3)
-            {
-                textSpeed = 0.2f;
-                delay = 0.3f;
-            }
-            else
-            {
-                // Restaurar la velocidad de escritura original para otras líneas
-                textSpeed = 0.1f;
-                delay = 0.2f;
-            }
-        }
-
-
         foreach (char letter in lines[index].ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
 
-        yield return new WaitForSeconds(delay); // Esperar un poco después de escribir la línea
+        yield return new WaitForSeconds(delay);
+
         NextLine();
     }
 
@@ -75,26 +65,12 @@ public class DialogueTetrisScript : MonoBehaviour
     {
         panel.SetActive(true);
         panelMostrado = true;
-
-        dialogueText.text = string.Empty;
-        StartDialogue();
     }
 
     public void EsconderPanel()
     {
         panel.SetActive(false);
         panelMostrado = false;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        MostrarPanel();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OnDialogueEnd.Invoke(); // Invocar el evento cuando el diálogo ha terminado
     }
 }
