@@ -14,10 +14,24 @@ public class UI_T : MonoBehaviour
     public GameObject menuInicio;
     public bool menuMostradoInicio;
 
+    public GameObject botonReiniciar;
+    public bool botonReiniciarMostrado;
+
     public int segundosCronometro;
     public Text cronometro;
 
-    
+    public void MostrarBotonReiniciar()
+    {
+        botonReiniciar.SetActive(true);
+        botonReiniciarMostrado = true;
+    }
+
+    public void EsconderBotonReiniciar()
+    {
+        botonReiniciar.SetActive(false);
+        botonReiniciarMostrado = false;
+    }
+
     public void MostrarMenuInicio()
     {
         menuInicio.SetActive(true);
@@ -29,6 +43,7 @@ public class UI_T : MonoBehaviour
         menuInicio.SetActive(false);
         menuMostradoInicio = false;
         ActivarCronometro();
+        MostrarBotonReiniciar();
     }
 
     public void MostrarMenuGanador()
@@ -99,6 +114,7 @@ public class UI_T : MonoBehaviour
         EsconderMenuGanador();
         EsconderMenuPerdedor();
         MostrarMenuInicio();
+        EsconderBotonReiniciar();
         // ActivarCronometro();
     }
 

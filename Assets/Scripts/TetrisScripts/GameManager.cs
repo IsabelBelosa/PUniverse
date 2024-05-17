@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	public GameObject startButton, window, windowPause, pauseBtn;
-
+	
 	// Use this for initialization
 	void Awake () {
 		Time.timeScale = 0; 
