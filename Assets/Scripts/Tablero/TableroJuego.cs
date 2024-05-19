@@ -14,6 +14,7 @@ public class TableroJuego : MonoBehaviour
     static public int turno = 0;
     private int numJugadores = 4;
     static public Text puntos;
+    public Text turnos;
     public Text numJugador;
     private string minijuego;
     static public bool juegoTerminado = false; // Variable para indicar si el juego ha terminado
@@ -50,6 +51,8 @@ public class TableroJuego : MonoBehaviour
         puntos.enabled = true;
         numJugador.enabled = true;
         turno_juego = 1;
+        turnos.text = "Turno: " + turno_juego + "/10";
+        turnos.enabled = true;
         jugador1.ActivarTurno();
     }
 
@@ -60,6 +63,7 @@ public class TableroJuego : MonoBehaviour
             numJugador.text = "Jugador " + (turno+1);
             numJugador.color = Color.blue;
             turno_juego++;
+            turnos.text = "Turno: " + turno_juego + "/10";
             jugador1.ActivarTurno();
         }
         if (turno == 1){

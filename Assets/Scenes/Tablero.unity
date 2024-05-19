@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12065884, g: 0.116636015, b: 0.12262357, a: 1}
+  m_IndirectSpecularColor: {r: 0.12060594, g: 0.11666121, b: 0.12257784, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -309,6 +309,7 @@ MonoBehaviour:
   velocidadMovimiento: 8
   camara: {fileID: 1004306642}
   tablero: {fileID: 1206892755}
+  puntuacion: 0
 --- !u!1 &56752032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1868,85 @@ MonoBehaviour:
   mareo: {fileID: 8300000, guid: cee6a9e4cf204a64fb9e6e334d06556d, type: 3}
   cohete: {fileID: 8300000, guid: 63b124102142d0b43ba69876cc16be19, type: 3}
   tablero: {fileID: 1206892755}
+--- !u!1 &736102772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736102773}
+  - component: {fileID: 736102774}
+  - component: {fileID: 736102775}
+  m_Layer: 5
+  m_Name: Turno
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &736102773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736102772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1040211288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 316, y: 210}
+  m_SizeDelta: {x: 250, y: 45}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &736102774
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736102772}
+  m_CullTransparentMesh: 1
+--- !u!114 &736102775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736102772}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.12324904, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: a2adc9449e9dfa744bec226b0d019010, type: 3}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 55
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Turno: 0/10'
 --- !u!1001 &761365255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2432,6 +2512,7 @@ RectTransform:
   - {fileID: 1680622445}
   - {fileID: 1883587900}
   - {fileID: 507801862}
+  - {fileID: 736102773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2688,6 +2769,7 @@ MonoBehaviour:
   velocidadMovimiento: 8
   camara: {fileID: 1004306642}
   tablero: {fileID: 1206892755}
+  puntuacion: 0
 --- !u!1 &1156967221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,6 +3001,7 @@ MonoBehaviour:
   jugador2: {fileID: 47887746}
   jugador3: {fileID: 1220271100}
   jugador4: {fileID: 1288135660}
+  turnos: {fileID: 736102775}
   numJugador: {fileID: 1680622446}
 --- !u!1001 &1220271097
 PrefabInstance:
@@ -3033,6 +3116,7 @@ MonoBehaviour:
   velocidadMovimiento: 8
   camara: {fileID: 1004306642}
   tablero: {fileID: 1206892755}
+  puntuacion: 0
 --- !u!4 &1243348976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6025487438130513096, guid: 01dea3945f07e444d951321e8e81ed39, type: 3}
@@ -3169,6 +3253,7 @@ MonoBehaviour:
   velocidadMovimiento: 8
   camara: {fileID: 1004306642}
   tablero: {fileID: 1206892755}
+  puntuacion: 0
 --- !u!1001 &1294122756
 PrefabInstance:
   m_ObjectHideFlags: 0
