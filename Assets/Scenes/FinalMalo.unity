@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 158496934}
   - component: {fileID: 158496933}
   m_Layer: 5
-  m_Name: ganador
+  m_Name: perdedor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +388,7 @@ PrefabInstance:
     - target: {fileID: 3817784043795351304, guid: 3d21a4c582a2a1c41af9db1a32a40044, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 92917bfa923590a4b96c51fcf62627c4, type: 2}
+      objectReference: {fileID: 9100000, guid: 10b60615e908fdf4f8d7e1babcfbe6b5, type: 2}
     - target: {fileID: 7069334787293338994, guid: 3d21a4c582a2a1c41af9db1a32a40044, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -734,7 +734,7 @@ PrefabInstance:
     - target: {fileID: 7571467648418185483, guid: ff90108555a55564780c72f88e461a01, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 92917bfa923590a4b96c51fcf62627c4, type: 2}
+      objectReference: {fileID: 9100000, guid: 10b60615e908fdf4f8d7e1babcfbe6b5, type: 2}
     - target: {fileID: 7571467648418185483, guid: ff90108555a55564780c72f88e461a01, type: 3}
       propertyPath: m_WriteDefaultValuesOnDisable
       value: 0
@@ -827,6 +827,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079285232}
   m_CullTransparentMesh: 1
+--- !u!1 &1137715146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3798994977671446987, guid: ff90108555a55564780c72f88e461a01, type: 3}
+  m_PrefabInstance: {fileID: 1028579135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1163775071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7069334787293338994, guid: 3d21a4c582a2a1c41af9db1a32a40044, type: 3}
@@ -915,7 +920,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4285190426915457719, guid: 2822499f90ff4074695128143b5d052e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1798678477}
+      addedObject: {fileID: 1798678479}
   m_SourcePrefab: {fileID: 100100000, guid: 2822499f90ff4074695128143b5d052e, type: 3}
 --- !u!1 &1270867551
 GameObject:
@@ -1089,7 +1094,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4285190426915457719, guid: 2822499f90ff4074695128143b5d052e, type: 3}
   m_PrefabInstance: {fileID: 1201032418}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1798678477
+--- !u!4 &1798678478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5145637406453164431, guid: 2822499f90ff4074695128143b5d052e, type: 3}
+  m_PrefabInstance: {fileID: 1201032418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1798678479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1098,18 +1108,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1798678476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d95f1f210bb67f347a9072c9269c536e, type: 3}
+  m_Script: {fileID: 11500000, guid: aaab908fed4dba9468f8aff39f1d00b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cristal: {fileID: 379931142}
   camara: {fileID: 385869307}
-  has_ganado: {fileID: 1079285234}
-  ganador: {fileID: 158496933}
---- !u!4 &1798678478 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5145637406453164431, guid: 2822499f90ff4074695128143b5d052e, type: 3}
-  m_PrefabInstance: {fileID: 1201032418}
-  m_PrefabAsset: {fileID: 0}
+  has_perdido: {fileID: 1079285234}
+  perdedor: {fileID: 158496933}
+  AlienAzul: {fileID: 1137715146}
+  AlienVerde: {fileID: 1868742818}
 --- !u!1001 &1821369249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1268,6 +1275,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 147e9fb52f4b2ed4facde44571e75e04, type: 3}
+--- !u!1 &1868742818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7588708463792752584, guid: 3d21a4c582a2a1c41af9db1a32a40044, type: 3}
+  m_PrefabInstance: {fileID: 516869431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946637961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1229251971759408710, guid: 5f776740c447e45afb25edbca842de92, type: 3}
